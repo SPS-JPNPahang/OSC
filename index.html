@@ -1,0 +1,680 @@
+<!DOCTYPE html>
+<html lang="ms">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>One Stop Centre - SPS, JPN Pahang</title>
+    <!-- Pautan ke Google Fonts (Roboto) -->
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+
+    <!-- == KOD CSS BERMULA DI SINI == -->
+    <style>
+        /* --- Tetapan Asas & Font --- */
+        :root {
+            --primary-color: #0056b3;  /* Biru profesional (Warna tema kerajaan) */
+            --primary-hover: #004a99; /* Biru lebih gelap untuk hover */
+            --sidebar-bg: #f8f9fa;     /* Kelabu sangat cair untuk sidebar */
+            --content-bg: #ffffff;     /* Putih untuk kandungan */
+            --text-color: #333;        /* Teks gelap untuk kontras */
+            --text-light: #555;      /* Teks lebih cair untuk penerangan */
+            --border-color: #dee2e6;   /* Warna border */
+            --error-color: #d93025;   /* Merah untuk ralat */
+            --shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+            --border-radius: 8px;      /* Lengkungan "sweet" */
+        }
+
+        body {
+            font-family: 'Roboto', -apple-system, BlinkMacSystemFont, "Segoe UI", "Helvetica Neue", Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #e9ecef;
+            color: var(--text-color);
+            line-height: 1.6;
+        }
+
+        .container {
+            display: flex;
+            min-height: 100vh;
+        }
+
+        /* --- Sidebar (Bahagian Kiri) --- */
+        .sidebar {
+            width: 280px;
+            background-color: var(--sidebar-bg);
+            border-right: 1px solid var(--border-color);
+            padding: 25px;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .sidebar header {
+            text-align: center; /* BARU: Mengetengahkan logo dan tajuk */
+            margin-bottom: 30px;
+            border-bottom: 2px solid var(--primary-color);
+            padding-bottom: 15px;
+        }
+
+        /* BARU: Stail untuk logo jabatan */
+        .sidebar-logo {
+            width: 80px; /* Anda boleh ubah saiz ini */
+            height: auto;
+            display: block;
+            margin: 0 auto 15px; /* Letak di tengah, jarak 15px dari bawah */
+        }
+
+        .sidebar h1 {
+            font-size: 1.8rem;
+            color: var(--primary-color);
+            margin: 0;
+        }
+
+        .sidebar h2 {
+            font-size: 1rem;
+            color: var(--text-light);
+            margin: 0;
+            font-weight: 400;
+        }
+
+        .sidebar nav ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .sidebar nav li {
+            margin-bottom: 10px;
+        }
+
+        .sidebar nav .tab-link {
+            display: block;
+            padding: 12px 18px;
+            text-decoration: none;
+            color: var(--text-light);
+            font-weight: bold;
+            border-radius: var(--border-radius);
+            transition: all 0.3s ease;
+        }
+
+        .sidebar nav .tab-link:hover {
+            background-color: #e9ecef;
+            color: var(--primary-color);
+        }
+
+        .sidebar nav .tab-link.active {
+            background-color: var(--primary-color);
+            color: #fff;
+            box-shadow: 0 4px 8px rgba(0, 86, 179, 0.3);
+        }
+
+        .sidebar footer {
+            margin-top: auto;
+            font-size: 0.8rem;
+            color: var(--text-light);
+            text-align: center;
+        }
+
+        /* --- Kandungan Utama (Bahagian Kanan) --- */
+        .main-content {
+            flex-grow: 1;
+            padding: 30px;
+            background-color: var(--content-bg);
+            overflow-y: auto; /* Membenarkan skrol jika kandungan panjang */
+        }
+
+        .main-content h2 {
+            font-size: 2rem;
+            color: var(--primary-color);
+            border-bottom: 1px solid var(--border-color);
+            padding-bottom: 10px;
+            margin-top: 0;
+        }
+
+        /* BARU: Stail untuk header imej di Tab 2 */
+        .tab-header-images {
+            display: flex;
+            gap: 20px; /* Jarak antara imej */
+            margin-top: 20px;
+            margin-bottom: 20px;
+        }
+
+        .tab-header-images img {
+            width: 50%; /* Bahagi dua, 50% setiap satu */
+            height: auto;
+            border-radius: var(--border-radius);
+            box-shadow: var(--shadow);
+            border: 1px solid var(--border-color);
+        }
+
+        /* --- Pengurusan Tab --- */
+        .tab-content {
+            display: none; /* Sembunyikan semua tab secara lalai */
+            animation: fadeIn 0.5s ease;
+        }
+
+        .tab-content.active {
+            display: block; /* Tunjukkan hanya tab yang aktif */
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* --- Tab 1: Imej --- */
+        .image-container {
+            width: 100%;
+            margin-top: 20px;
+            overflow: hidden; 
+            border-radius: var(--border-radius);
+            box-shadow: var(--shadow);
+            border: 1px solid var(--border-color);
+        }
+
+        .image-container img {
+            width: 100%; /* Saiz A4 akan responsif */
+            height: auto;
+            display: block;
+        }
+
+        /* --- Tab 2: Grid Butang --- */
+        .button-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 20px;
+            margin-top: 20px;
+        }
+
+        .button-card {
+            background-color: #fff;
+            border: 1px solid var(--border-color);
+            border-radius: var(--border-radius);
+            padding: 20px;
+            box-shadow: var(--shadow);
+            transition: all 0.3s ease;
+        }
+
+        .button-card:hover {
+            transform: translateY(-5px); /* Efek "cool" bila hover */
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.08);
+        }
+
+        /* Ini menggayakan KEDUA-DUA jenis butang (pautan <a> dan butang <button>) */
+        .button-card .button {
+            display: inline-block;
+            background-color: var(--primary-color);
+            color: #fff;
+            padding: 10px 18px;
+            text-decoration: none;
+            font-weight: bold;
+            border-radius: 5px;
+            transition: background-color 0.3s ease;
+            margin-bottom: 10px;
+            cursor: pointer;
+            border: none; /* Untuk <button> */
+            font-family: 'Roboto', sans-serif; /* Untuk <button> */
+            font-size: 1rem; /* Untuk <button> */
+        }
+
+        .button-card .button:hover {
+            background-color: var(--primary-hover);
+        }
+
+        .button-card p {
+            font-size: 0.9rem;
+            color: var(--text-light);
+            margin: 0;
+        }
+
+        /* --- Gaya untuk Modal Kata Laluan (KHAS UNTUK PAUTAN SULIT) --- */
+        .modal-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.7); /* Latar belakang gelap */
+            display: none; /* DISEMBUYIKAN SECARA LALAI */
+            justify-content: center;
+            align-items: center;
+            z-index: 1000;
+        }
+
+        .modal-content {
+            background: #fff;
+            padding: 30px;
+            border-radius: var(--border-radius);
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.2);
+            width: 90%;
+            max-width: 400px;
+            text-align: center;
+            animation: fadeIn 0.3s ease;
+        }
+
+        .modal-content h3 {
+            margin-top: 0;
+            color: var(--primary-color);
+        }
+
+        .modal-content input[type="password"] {
+            width: calc(100% - 22px); /* 100% tolak padding */
+            padding: 10px;
+            border: 1px solid var(--border-color);
+            border-radius: 5px;
+            margin-top: 10px;
+            margin-bottom: 15px;
+        }
+
+        .modal-content button {
+            width: 100%;
+            padding: 12px;
+            background-color: var(--primary-color);
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .modal-content button:hover {
+            background-color: var(--primary-hover);
+        }
+
+        /* Gaya butang apabila 'disabled' (sedang loading) */
+        .modal-content button:disabled {
+            background-color: #aaa;
+            cursor: not-allowed;
+        }
+
+        .error-msg {
+            color: var(--error-color);
+            font-size: 0.9rem;
+            margin-top: 10px;
+            display: none; /* Sembunyi sehingga ada ralat */
+        }
+
+        /* --- BARU: Stail untuk Menu Mudah Alih (Hamburger) --- */
+        
+        /* Butang Hamburger (tersembunyi pada desktop) */
+        .menu-toggle-btn {
+            display: none; 
+            background: var(--primary-color);
+            color: white;
+            border: none;
+            padding: 8px 12px;
+            border-radius: var(--border-radius);
+            font-size: 1.5rem;
+            position: fixed; /* Letak di penjuru */
+            top: 15px;
+            left: 15px;
+            z-index: 1500;
+            cursor: pointer;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+            transition: background-color 0.3s ease;
+        }
+        .menu-toggle-btn:hover {
+            background-color: var(--primary-hover);
+        }
+
+        /* Butang Tutup (tersembunyi pada desktop) */
+        .sidebar-close-btn {
+            display: none;
+            position: absolute;
+            top: 10px;
+            right: 15px;
+            background: none;
+            border: none;
+            font-size: 2.5rem;
+            color: var(--text-light);
+            cursor: pointer;
+            transition: color 0.3s ease;
+        }
+        .sidebar-close-btn:hover {
+            color: var(--text-color);
+        }
+
+        /* Overlay (tersembunyi pada desktop) */
+        #menu-overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.5);
+            z-index: 1999; /* Di bawah sidebar, di atas kandungan */
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+        #menu-overlay.overlay-active {
+            display: block;
+            opacity: 1;
+        }
+
+
+        /* UBAHSUAI: Tukar breakpoint kepada 1024px dan tambah stail mudah alih */
+        @media (max-width: 1024px) {
+            .container {
+                display: block; /* Tukar dari flex ke block */
+            }
+
+            .sidebar {
+                position: fixed; /* Tetapkan sidebar */
+                left: 0;
+                top: 0;
+                height: 100vh; /* Ketinggian penuh */
+                z-index: 2000; /* Paling atas */
+                transform: translateX(-100%); /* Sembunyi ke kiri */
+                transition: transform 0.3s ease-out;
+                box-shadow: 0 0 20px rgba(0,0,0,0.2);
+                overflow-y: auto; /* Benarkan skrol jika menu panjang */
+            }
+
+            /* Kelas 'active' untuk tunjukkan sidebar */
+            .sidebar.sidebar-active {
+                transform: translateX(0);
+            }
+
+            .main-content {
+                width: 100%;
+                padding-left: 15px; /* Kurangkan padding kiri */
+                padding-right: 15px; /* Kurangkan padding kanan */
+                padding-top: 80px; /* Beri ruang untuk butang hamburger */
+            }
+
+            /* Tunjukkan butang-butang mudah alih */
+            .menu-toggle-btn {
+                display: block;
+            }
+            .sidebar-close-btn {
+                display: block;
+            }
+            
+            /* Ini adalah dari kod lama, kita simpan */
+            .tab-header-images {
+                flex-direction: column; /* Susun imej secara menegak */
+            }
+            .tab-header-images img {
+                width: 100%; /* Imej ambil lebar penuh */
+            }
+        }
+    </style>
+    <!-- == KOD CSS BERAKHIR DI SINI == -->
+
+</head>
+<body>
+    <!-- BARU: Overlay untuk menu mudah alih -->
+    <div id="menu-overlay"></div>
+
+    <!-- == MODAL KATA LALUAN (KHAS UNTUK PAUTAN SULIT) == -->
+    <div id="secure-link-modal" class="modal-overlay">
+        <div class="modal-content">
+            <h3>Pengesahan Diperlukan</h3>
+            <p>Pautan ini memerlukan kata laluan untuk diakses.</p>
+            <form id="secure-link-form">
+                <input type="password" id="secure-link-input" placeholder="Kata Laluan" required>
+                <button type="submit" id="secure-link-submit">Masuk</button>
+            </form>
+            <p id="secure-link-error" class="error-msg"></p>
+        </div>
+    </div>
+
+    <!-- == KANDUNGAN UTAMA (SENTIASA KELIHATAN) == -->
+    <div class="container"> 
+        
+        <!-- Bahagian Sidebar (Kiri) -->
+        <aside class="sidebar">
+            <!-- BARU: Butang tutup untuk mudah alih -->
+            <button id="sidebar-close" class="sidebar-close-btn">&times;</button>
+            <header>
+                <!-- BARU: Tambah logo di sini -->
+                <!-- PASTIKAN anda memuat naik logo ini ke GitHub -->
+                <img src="logo_jabatan.png" alt="Logo Jabatan" class="sidebar-logo">
+                <h1>One Stop Centre</h1>
+                <h2>SPS, JPN Pahang</h2>
+            </header>
+            <nav>
+                <ul>
+                    <!-- Tab 1 -->
+                    <li>
+                        <a href="#" class="tab-link active" data-tab="utama">
+                            <span>Utama</span>
+                        </a>
+                    </li>
+                    <!-- Tab 2 -->
+                    <li>
+                        <a href="#" class="tab-link" data-tab="pautan">
+                            <span>Koleksi Pautan</span>
+                        </a>
+                    </li>
+                </ul>
+            </nav>
+            <footer>
+                <p>&copy; 2024 JPN Pahang. Hak Cipta Terpelihara.</p>
+            </footer>
+        </aside>
+
+        <!-- Bahagian Kandungan (Kanan) -->
+        <main class="main-content">
+            
+            <!-- BARU: Butang Hamburger untuk mudah alih -->
+            <button id="menu-toggle" class="menu-toggle-btn">
+                <span>&#9776;</span> <!-- Kod watak hamburger -->
+            </button>
+
+            <!-- Kandungan Tab 1: Utama -->
+            <section id="utama" class="tab-content active">
+                <h2>Selamat Datang</h2>
+                <pSektor Pengurusan Sekolah, Jabatan Pendidikan Negeri Pahang.</p>
+                <div class="image-container">
+                    <!-- PASTIKAN anda ada imej bernama "imej1.png" dalam folder yang sama -->
+                    <img src="imej1.png" alt="Banner OSC">
+                </div>
+            </section>
+
+            <!-- Kandungan Tab 2: Pautan -->
+            <section id="pautan" class="tab-content">
+                <h2>Koleksi Pautan Penting</h2>
+                
+                <!-- BARU: Tambah header imej di sini -->
+                <!-- PASTIKAN anda memuat naik imej2.png dan imej3.png ke GitHub -->
+                <div class="tab-header-images">
+                    <img src="imej2.png" alt="Header Imej 2">
+                </div>
+
+                <p>Klik pada butang di bawah untuk ke pautan yang berkaitan.</p>
+                
+                <div class="button-grid">
+                    <!-- GANTIKAN URL DAN PENERANGAN DI BAWAH -->
+
+                    <!-- Butang 1 (Biasa) -->
+                    <div class="button-card">
+                        <a href="URL_ANDA_DI_SINI_1" class="button" target="_blank">Sekolah Angkat Madani (SAM)</a>
+                        <p>Pelaporan dan Dashboard berkaitan Sekolah Angkat Madani </p>
+                    </div>
+                    <!-- Butang 2 (Biasa) -->
+                    <div class="button-card">
+                        <a href="URL_ANDA_DI_SINI_2" class="button" target="_blank">Permit MySTEP</a>
+                        <p>Borang, Kelulusan Dan CArta Alir Berkaitan Dengan Pengurusan Permit MySTEP</p>
+                    </div>
+                    <!-- Butang 3 (Biasa) -->
+                    <div class="button-card">
+                        <a href="URL_ANDA_DI_SINI_3" class="button" target="_blank">Lawatan Murid</a>
+                        <p>Lawatan Sambil Belajar Murid Pahang -  Borang,Kelulusan, Fail Berkaitan</p>
+                    </div>
+                    <!-- Butang 5 (Biasa) -->
+                    <div class="button-card">
+                        <a href="URL_ANDA_DI_SINI_5" class="button" target="_blank">MMI-OBB</a>
+                        <p>Dalam proses pembangunan. Akan tersedia dalam sedikit masa lagi.</p>
+                    </div>                    
+                    <!-- == BUTANG 8 (KHAS DENGAN KATA LALUAN) == -->
+                    <div class="button-card">
+                        <!-- Ini bukan pautan <a>, ini butang <button> -->
+                        <button type="button" id="secure-button-8" class="button">SPS Contacs</button>
+                        <p>⚠️ Akses hanya untuk warga Sektor Pengurusan Sekolah sahaja. ⚠️</p>
+                    </div>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <!-- == KOD JAVASCRIPT BERMULA DI SINI == -->
+    <script>
+        /**
+         * Fail: script.js (diletakkan terus dalam HTML)
+         * Logik: Menguruskan fungsi tab DAN modal kata laluan untuk pautan sulit.
+         */
+
+        // ===================================================================
+        // == 1. GANTIKAN DENGAN URL WEB APP GOOGLE APPS SCRIPT ANDA ==
+        // ===================================================================
+        const GAS_WEB_APP_URL = 'https://script.google.com/macros/s/AKfycbznhf3kCyoQHRFwk6QYtSSJ8VoCeb83bnu5U4OshYNTrp5N3_mYd1aCtpWCnCdnpCFcEg/exec';
+        
+        // ===================================================================
+        // == 2. GANTIKAN DENGAN PAUTAN SULIT ANDA (UNTUK BUTANG KHAS) ==
+        // ===================================================================
+        const SECRET_URL = 'https://sps-pahang-rg6n.glide.page';
+        // ===================================================================
+
+
+        document.addEventListener('DOMContentLoaded', function() {
+            
+            // --- BAHAGIAN 1: LOGIK TAB ---
+
+            const tabLinks = document.querySelectorAll('.tab-link');
+            const tabContents = document.querySelectorAll('.tab-content');
+
+            tabLinks.forEach(function(link) {
+                link.addEventListener('click', function(event) {
+                    event.preventDefault();
+                    const targetTab = this.getAttribute('data-tab'); 
+
+                    tabLinks.forEach(navLink => navLink.classList.remove('active'));
+                    tabContents.forEach(content => content.classList.remove('active'));
+
+                    this.classList.add('active');
+                    document.getElementById(targetTab).classList.add('active');
+                });
+            });
+
+            // --- BAHAGIAN 2: LOGIK KATA LALUAN UNTUK PAUTAN SULIT ---
+            // ... (Kod sedia ada dikekalkan, tiada perubahan) ...
+            // Rujukan kepada elemen-elemen modal
+            const secureModal = document.getElementById('secure-link-modal');
+            const secureForm = document.getElementById('secure-link-form');
+            const secureInput = document.getElementById('secure-link-input');
+            const secureButtonSubmit = document.getElementById('secure-link-submit');
+            const secureError = document.getElementById('secure-link-error');
+            const secureButtonTrigger = document.getElementById('secure-button-8'); // Butang yang memulakan modal
+
+            // 1. Apabila pengguna klik butang sulit
+            secureButtonTrigger.addEventListener('click', function() {
+                // Reset modal setiap kali ia dibuka
+                secureInput.value = '';
+                secureError.textContent = '';
+                secureError.style.display = 'none';
+                secureButtonSubmit.disabled = false;
+                secureButtonSubmit.textContent = 'Masuk';
+                
+                // Tunjukkan modal
+                secureModal.style.display = 'flex';
+                secureInput.focus(); // Terus fokus pada input kata laluan
+            });
+
+            // 2. Apabila pengguna klik di luar modal (kawasan gelap)
+            secureModal.addEventListener('click', function(event) {
+                // Hanya tutup jika klik pada 'overlay' (latar belakang)
+                if (event.target === secureModal) {
+                    secureModal.style.display = 'none';
+                }
+            });
+
+            // 3. Apabila pengguna 'submit' borang kata laluan
+            secureForm.addEventListener('submit', function(event) {
+                event.preventDefault(); // Halang borang daripada 'submit'
+                const password = secureInput.value;
+                
+                // Tunjukkan 'loading'
+                secureButtonSubmit.disabled = true;
+                secureButtonSubmit.textContent = 'Menyemak...';
+                secureError.style.display = 'none';
+
+                // Hantar kata laluan ke Google Apps Script (logik fetch)
+                fetch(GAS_WEB_APP_URL, {
+                    method: 'POST',
+                    mode: 'cors',
+                    cache: 'no-cache',
+                    headers: {
+                        'Content-Type': 'text/plain;charset=utf-8', 
+                    },
+                    body: JSON.stringify({ password: password }) 
+                })
+                .then(response => response.json())
+                .then(data => {
+                    if (data.success) {
+                        // BERJAYA!
+                        // 1. Sembunyikan modal
+                        secureModal.style.display = 'none';
+                        // 2. Buka pautan rahsia dalam tab baru
+                        window.open(SECRET_URL, '_blank'); 
+                    } else {
+                        // GAGAL!
+                        secureError.textContent = data.message || 'Kata laluan salah.';
+                        secureError.style.display = 'block';
+                        secureButtonSubmit.disabled = false;
+                        secureButtonSubmit.textContent = 'Masuk';
+                        secureInput.focus();
+                    }
+                })
+                .catch(error => {
+                    // Ralat (cth: tiada internet atau URL GAS salah)
+                    console.error('Ralat Fetch:', error);
+                    secureError.textContent = 'Tidak dapat menghubungi pelayan. Pastikan URL GAS betul.';
+                    secureError.style.display = 'block';
+                    secureButtonSubmit.disabled = false;
+                    secureButtonSubmit.textContent = 'Masuk';
+                });
+            });
+
+            // --- BARU: BAHAGIAN 3: LOGIK MENU HAMBURGER ---
+            const menuToggle = document.getElementById('menu-toggle');
+            const sidebarClose = document.getElementById('sidebar-close');
+            const sidebar = document.querySelector('.sidebar');
+            const overlay = document.getElementById('menu-overlay');
+
+            function openMenu() {
+                sidebar.classList.add('sidebar-active');
+                overlay.classList.add('overlay-active');
+            }
+
+            function closeMenu() {
+                sidebar.classList.remove('sidebar-active');
+                overlay.classList.remove('overlay-active');
+            }
+
+            // Buka menu bila klik hamburger
+            menuToggle.addEventListener('click', openMenu);
+            // Tutup menu bila klik butang 'x'
+            sidebarClose.addEventListener('click', closeMenu);
+            // Tutup menu bila klik kawasan overlay
+            overlay.addEventListener('click', closeMenu);
+
+            // BONUS: Tutup menu bila klik pautan tab di mudah alih
+            tabLinks.forEach(link => {
+                link.addEventListener('click', function() {
+                    // Hanya tutup jika dalam mod mudah alih (sidebar ada 'position: fixed')
+                    if (window.getComputedStyle(sidebar).position === 'fixed') {
+                        closeMenu();
+                    }
+                });
+            });
+
+        });
+    </script>
+    <!-- == KOD JAVASCRIPT BERAKHIR DI SINI == -->
+
+</body>
+</html>
+
+
+
