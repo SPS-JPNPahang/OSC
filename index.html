@@ -159,7 +159,7 @@
             to { opacity: 1; transform: translateY(0); }
         }
 
-       /* --- Tab 1: Imej --- */
+/* --- Tab 1: Imej --- */
 .image-container {
     width: 100%;
     margin-top: 20px;
@@ -168,21 +168,23 @@
     box-shadow: var(--shadow);
     border: 1px solid var(--border-color);
     
-    /* Hadkan ketinggian bekas */
-    /* 65vh = 65% dari ketinggian skrin. Anda boleh ubah nilai ini (cth: 60vh, 70vh) */
-    max-height: 65vh; 
-    /* background-color: #f0f0f0; <-- Dibuang untuk elak bar kelabu */
+    /* UBAHSUAI: Kita buang had ketinggian (max-height) */
+    /* Ini akan membenarkan imej menentukan ketinggiannya sendiri */
+    /* max-height: 65vh; <-- DIBUANG */
 }
 
 .image-container img {
-    width: 100%; 
+    width: 100%; /* Ambil 100% lebar */
     
-    /* Tetapkan ketinggian agar muat dan gunakan object-fit */
-    height: 100%; /* Guna 100% ketinggian bekas */
-    max-height: 65vh; /* Selaraskan dengan max-height bekas */
-    display: block;
-    object-fit: cover; /* UBAHSUAI: 'cover' akan memenuhi bekas (mungkin memotong tepi) */
+    /* UBAHSUAI: Biarkan ketinggian automatik */
+    height: auto; /* Biar pelayar kira ketinggian berdasarkan lebar */
+    /* max-height: 65vh; <-- DIBUANG */
+    display: block; /* Penting untuk elak ruang kosong di bawah */
+    
+    /* 'cover' dan 'contain' tidak lagi diperlukan */
+    /* object-fit: cover; <-- DIBUANG */
 }
+
 
         /* --- Tab 2: Grid Butang --- */
         .button-grid {
