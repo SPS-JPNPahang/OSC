@@ -16,7 +16,51 @@
     .main-content {
         margin-left: 0;
         padding: 30px 20px;
-        padding-top: 80px; /* Beri ruang untuk butang menu */
+        padding-top: 80px;
+    }
+    
+    /* Slider Responsive */
+    .slider-container {
+        margin-bottom: 1.5rem;
+        border-radius: 8px;
+    }
+    
+    .slider-wrapper {
+        height: 300px;
+    }
+    
+    .slider-nav {
+        width: 35px;
+        height: 35px;
+    }
+    
+    .slider-nav.prev {
+        left: 0.5rem;
+    }
+    
+    .slider-nav.next {
+        right: 0.5rem;
+    }
+    
+    .slider-nav svg {
+        width: 18px;
+        height: 18px;
+    }
+    
+    .slide-caption {
+        padding: 1.2rem;
+    }
+    
+    .slide-caption h3 {
+        font-size: 1.1rem;
+    }
+    
+    .slide-caption p {
+        font-size: 0.85rem;
+    }
+    
+    .slider-dots {
+        bottom: 1rem;
     }
 
     /* Sidebar - Tersembunyi secara default */
@@ -145,6 +189,55 @@
         left: 15px;
         padding: 10px 14px;
         font-size: 1.2rem;
+        box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+    }
+    
+    /* Slider Mobile */
+    .slider-container {
+        margin-bottom: 1rem;
+        border-radius: 6px;
+    }
+    
+    .slider-wrapper {
+        height: 200px;
+    }
+    
+    .slider-nav {
+        width: 30px;
+        height: 30px;
+    }
+    
+    .slider-nav svg {
+        width: 16px;
+        height: 16px;
+    }
+    
+    .slide-caption {
+        padding: 0.8rem;
+    }
+    
+    .slide-caption h3 {
+        font-size: 0.95rem;
+        margin-bottom: 0.3rem;
+    }
+    
+    .slide-caption p {
+        font-size: 0.75rem;
+        line-height: 1.3;
+    }
+    
+    .slider-dots {
+        bottom: 0.8rem;
+        gap: 0.4rem;
+    }
+    
+    .dot {
+        width: 8px;
+        height: 8px;
+    }
+    
+    .dot.active {
+        width: 24px;
     }
 
     /* Content Header */
@@ -225,8 +318,7 @@
     }
 
     .sidebar-logo {
-        width: 70px;
-        margin-bottom: 12px;
+        padding: 10px 15px;
     }
 
     .sidebar-header h1 {
@@ -321,6 +413,37 @@
     .main-content {
         padding: 12px 10px;
         padding-top: 65px;
+    }
+
+    /* Extra Small Slider */
+    .slider-wrapper {
+        height: 180px;
+    }
+    
+    .slider-nav {
+        width: 28px;
+        height: 28px;
+    }
+    
+    .slider-nav.prev {
+        left: 0.3rem;
+    }
+    
+    .slider-nav.next {
+        right: 0.3rem;
+    }
+    
+    .slide-caption {
+        padding: 0.6rem;
+    }
+    
+    .slide-caption h3 {
+        font-size: 0.85rem;
+    }
+    
+    .slide-caption p {
+        font-size: 0.7rem;
+        display: none;
     }
 
     .content-header h2 {
