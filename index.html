@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="ms">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="One Stop Centre - Sektor Pengurusan Sekolah, Jabatan Pendidikan Negeri Pahang">
+    <title>One Stop Centre - SPS, JPN Pahang</title>
+    
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    
+    <!-- CSS Files -->
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/responsive.css">
+    <link rel="stylesheet" href="css/engagebox.css">
+    <link rel="stylesheet" href="css/cards.css">
+    <link rel="stylesheet" href="css/slider.css">
+
+</head>
+<body>
+    
+    <!-- Overlay untuk Menu Mobile -->
+    <div id="menu-overlay"></div>
+
+    <!-- Modal Kata Laluan -->
+    <div id="secure-link-modal" class="modal-overlay">
+        <div class="modal-content">
+            <button class="modal-close" aria-label="Tutup">&times;</button>
+            <h3><i class="fas fa-lock"></i> Pengesahan Diperlukan</h3>
+            <p>Pautan ini memerlukan kata laluan untuk diakses.</p>
+            <form id="secure-link-form">
+                <div class="input-group">
+                    <i class="fas fa-key"></i>
+                    <input type="password" id="secure-link-input" placeholder="Masukkan Kata Laluan" required>
+                </div>
+                <button type="submit" id="secure-link-submit">
+                    <i class="fas fa-sign-in-alt"></i> Masuk
+                </button>
+            </form>
+            <p id="secure-link-error" class="error-msg"></p>
+        </div>
+    </div>
+
+    <!-- Container Utama -->
+    <div class="container">
+        
+        <!-- Sidebar -->
+        <aside class="sidebar" id="sidebar">
+            <button id="sidebar-close" class="sidebar-close-btn" aria-label="Tutup Menu">
+                <i class="fas fa-times"></i>
+            </button>
+            
+            <header class="sidebar-header">
+                <img src="images/logo_jabatan.png" alt="Logo JPN Pahang" class="sidebar-logo">
+            </header>
+            
+            <nav class="sidebar-nav">
+                <ul>
+                    <li>
+                        <a href="#" class="tab-link active" data-tab="utama">
+                            <i class="fas fa-home"></i>
+                            <span>Utama</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#" class="tab-link" data-tab="pautan">
+                            <i class="fas fa-link"></i>
+                            <span>Koleksi Pautan</span>
+                        </a>
+                    </li>
+                </ul>
+            </nav>
+            
+            <footer class="sidebar-footer">
+                <p>
+                    &copy; 2025 Sektor Pengurusan Sekolah<br>
+                    Jabatan Pendidikan Negeri Pahang<br>
+                    Hak Cipta Terpelihara.
+                </p>
+            </footer>
+        </aside>
+
+        <!-- Kandungan Utama -->
+        <main class="main-content">
+            
+            <!-- Butang Menu Mobile -->
+            <button id="menu-toggle" class="menu-toggle-btn" aria-label="Buka Menu">
+                <i class="fas fa-bars"></i>
+            </button>
+
+            <!-- Tab 1: Utama -->
+            <section id="utama" class="tab-content active">
+                <div class="content-header">
+                    <h2>Selamat Datang</h2>
+                    <p class="subtitle">Sektor Pengurusan Sekolah, Jabatan Pendidikan Negeri Pahang</p>
+                </div>
+                <!-- SLIDER SECTION -->
+                <div id="slider-container" class="slider-container"></div>
+
+            </section>
+
+            <!-- Tab 2: Koleksi Pautan -->
+            <section id="pautan" class="tab-content">
+                <div class="content-header">
+                    <h2>Koleksi Pautan</h2>
+                    <p class="subtitle">Akses pantas ke pelbagai sistem dan aplikasi</p>
+                </div>
+
+                <!-- Grid Butang Pautan -->
+                <div class="button-grid">
+                    
+                    <!-- Pautan 1: SAM -->
+                    <div class="button-card-new" data-tooltip="Sekolah Angkat Madani">
+                        <div class="card-icon-new">
+                            <i class="fas fa-school"></i>
+                        </div>
+                        <h3 class="card-title-new">SAM</h3>
+                        
+                        <!-- Expanded Content (Hidden by default) -->
+                        <div class="card-expanded">
+                            <p class="card-description">Pelaporan dan Dashboard berkaitan Sekolah Angkat Madani Negeri Pahang.</p>
+                            <a href="https://samil-mey.github.io/SAMPahang25/" class="btn-card" target="_blank">
+                                <i class="fas fa-external-link-alt"></i> Lawati Portal
+                            </a>
+                        </div>
+                    </div>
+
+                    <!-- Pautan 2: Permit MySTEP -->
+                    <div class="button-card-new" data-tooltip="Permit MySTEP">
+                        <div class="card-icon-new">
+                            <i class="fas fa-id-card"></i>
+                        </div>
+                        <h3 class="card-title-new">Permit MySTEP</h3>
+                        
+                        <div class="card-expanded">
+                            <p class="card-description">Borang, Kelulusan dan Carta Alir Berkaitan Dengan Pengurusan Permit MySTEP.</p>
+                            <a href="https://samil-mey.github.io/permit1.0/" class="btn-card" target="_blank">
+                                <i class="fas fa-external-link-alt"></i> Lawati Portal
+                            </a>
+                        </div>
+                    </div>
+
+                    <!-- Pautan 3: Lawatan Murid -->
+                    <div class="button-card-new" data-tooltip="Lawatan Sambil Belajar">
+                        <div class="card-icon-new">
+                            <i class="fas fa-bus"></i>
+                        </div>
+                        <h3 class="card-title-new">Lawatan Murid</h3>
+                        
+                        <div class="card-expanded">
+                            <p class="card-description">Lawatan Sambil Belajar Murid Pahang - Borang, Kelulusan, Fail Berkaitan.</p>
+                            <a href="https://jpnpahang.github.io/LSBMuridPahang/" class="btn-card" target="_blank">
+                                <i class="fas fa-external-link-alt"></i> Lawati Portal
+                            </a>
+                        </div>
+                    </div>
+
+                    <!-- Pautan 4: MMI-OBB -->
+                    <div class="button-card-new disabled" data-tooltip="Dalam Pembangunan">
+                        <div class="card-icon-new">
+                            <i class="fas fa-cog"></i>
+                        </div>
+                        <h3 class="card-title-new">MMI-OBB</h3>
+                        
+                        <div class="card-expanded">
+                            <p class="card-description">Dalam proses pembangunan. Akan tersedia dalam sedikit masa lagi.</p>
+                            <button class="btn-card" disabled>
+                                <i class="fas fa-clock"></i> Tidak Tersedia
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Pautan 5: SPS Contacts -->
+                    <div class="button-card-new secured" data-tooltip="Portal Terhad (Kata Laluan Diperlukan)">
+                        <div class="card-icon-new">
+                            <i class="fas fa-shield-alt"></i>
+                        </div>
+                        <h3 class="card-title-new">SPS Contacts</h3>
+                        
+                        <div class="card-expanded">
+                            <p class="card-description"><i class="fas fa-lock"></i> Terhad untuk warga Sektor Pengurusan Sekolah Pahang sahaja.</p>
+                            <button type="button" id="secure-button-8" class="btn-card btn-secure">
+                                <i class="fas fa-lock"></i> Akses Portal
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Pautan 6: SWASTA -->
+                    <div class="button-card-new disabled" data-tooltip="Dalam Pembangunan">
+                        <div class="card-icon-new">
+                            <i class="fas fa-building"></i>
+                        </div>
+                        <h3 class="card-title-new">SWASTA</h3>
+                        
+                        <div class="card-expanded">
+                            <p class="card-description">Maklumat dan pengurusan sekolah swasta. Dalam proses pembangunan.</p>
+                            <button class="btn-card" disabled>
+                                <i class="fas fa-clock"></i> Tidak Tersedia
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Pautan 7: PIBG -->
+                    <div class="button-card-new disabled" data-tooltip="Dalam Pembangunan">
+                        <div class="card-icon-new">
+                            <i class="fas fa-users"></i>
+                        </div>
+                        <h3 class="card-title-new">PIBG</h3>
+                        
+                        <div class="card-expanded">
+                            <p class="card-description">Portal PIBG dan penglibatan ibu bapa. Dalam proses pembangunan.</p>
+                            <button class="btn-card" disabled>
+                                <i class="fas fa-clock"></i> Tidak Tersedia
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Pautan 8: INFO -->
+                    <div class="button-card-new disabled" data-tooltip="Dalam Pembangunan">
+                        <div class="card-icon-new">
+                            <i class="fas fa-info-circle"></i>
+                        </div>
+                        <h3 class="card-title-new">INFO</h3>
+                        
+                        <div class="card-expanded">
+                            <p class="card-description">Maklumat dan panduan umum. Dalam proses pembangunan.</p>
+                            <button class="btn-card" disabled>
+                                <i class="fas fa-clock"></i> Tidak Tersedia
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+        </main>
+    </div>
+
+    <!-- JavaScript Files -->
+    <script src="js/slides.js"></script>
+    <script src="js/slider.js"></script>
+    <script src="js/main.js"></script>
+    <script src="js/modal.js"></script>
+    <script src="js/engagebox.js"></script>
+    <script src="js/cards.js"></script>
+
+</body>
+</html>

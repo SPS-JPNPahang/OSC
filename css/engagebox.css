@@ -1,0 +1,189 @@
+/* ============================================
+   ENGAGEBOX - WELCOME POPUP
+   Auto-muncul bila buka website
+============================================ */
+
+/* Overlay Background */
+.engagebox-overlay {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.75);
+    z-index: 9999;
+    justify-content: center;
+    align-items: center;
+    animation: fadeIn 0.3s ease;
+}
+
+.engagebox-overlay.active {
+    display: flex;
+}
+
+/* Engagebox Container */
+.engagebox-container {
+    position: relative;
+    max-width: 600px;
+    width: 90%;
+    background: white;
+    border-radius: 16px;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
+    overflow: hidden;
+    animation: slideUp 0.5s ease;
+}
+
+/* Close Button */
+.engagebox-close {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    width: 40px;
+    height: 40px;
+    background: rgba(255, 255, 255, 0.9);
+    border: none;
+    border-radius: 50%;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 10;
+    transition: all 0.3s ease;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+}
+
+.engagebox-close:hover {
+    background: white;
+    transform: rotate(90deg) scale(1.1);
+}
+
+.engagebox-close i {
+    font-size: 1.5rem;
+    color: #333;
+}
+
+/* Image Section */
+.engagebox-image {
+    width: 100%;
+    height: auto;
+    display: block;
+}
+
+.engagebox-image img {
+    width: 100%;
+    height: auto;
+    display: block;
+}
+
+/* Content Section */
+.engagebox-content {
+    padding: 30px;
+    text-align: center;
+    background: linear-gradient(to bottom, #f8f9fa 0%, white 100%);
+}
+
+.engagebox-message {
+    font-size: 1.1rem;
+    color: #333;
+    line-height: 1.8;
+    margin: 0;
+    font-weight: 500;
+}
+
+/* Timer Bar */
+.engagebox-timer {
+    height: 4px;
+    background: #e9ecef;
+    position: relative;
+    overflow: hidden;
+}
+
+.engagebox-timer-bar {
+    height: 100%;
+    background: linear-gradient(90deg, #0056b3, #00a8ff);
+    width: 100%;
+    animation: timerProgress 10s linear forwards;
+}
+
+/* Animations */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes slideUp {
+    from {
+        opacity: 0;
+        transform: translateY(50px) scale(0.9);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+}
+
+@keyframes timerProgress {
+    from {
+        width: 100%;
+    }
+    to {
+        width: 0%;
+    }
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .engagebox-container {
+        max-width: 95%;
+        border-radius: 12px;
+    }
+
+    .engagebox-content {
+        padding: 25px 20px;
+    }
+
+    .engagebox-message {
+        font-size: 1rem;
+        line-height: 1.6;
+    }
+
+    .engagebox-close {
+        width: 35px;
+        height: 35px;
+        top: 10px;
+        right: 10px;
+    }
+
+    .engagebox-close i {
+        font-size: 1.3rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .engagebox-container {
+        max-width: 98%;
+        border-radius: 10px;
+    }
+
+    .engagebox-content {
+        padding: 20px 15px;
+    }
+
+    .engagebox-message {
+        font-size: 0.95rem;
+    }
+
+    .engagebox-close {
+        width: 32px;
+        height: 32px;
+    }
+
+    .engagebox-close i {
+        font-size: 1.2rem;
+    }
+}

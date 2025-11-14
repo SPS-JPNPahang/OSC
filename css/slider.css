@@ -1,0 +1,277 @@
+/* ═══════════════════════════════════════════════════════
+   SLIDER SYSTEM - ONE STOP CENTRE SPS JPN PAHANG
+   Styling untuk slider auto-play dengan navigation
+   ═══════════════════════════════════════════════════════ */
+
+/* Container utama slider */
+.slider-container {
+    position: relative;
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto 2rem auto;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    background: #f8fafc;
+}
+
+/* Wrapper untuk slides */
+.slider-wrapper {
+    position: relative;
+    width: 100%;
+    height: 450px; /* Adjust ikut keperluan */
+    overflow: hidden;
+}
+
+/* Setiap slide */
+.slide {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    transition: opacity 0.8s ease-in-out;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Slide yang aktif */
+.slide.active {
+    opacity: 1;
+    z-index: 1;
+}
+
+/* Gambar dalam slide */
+.slide img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Gambar akan cover tanpa distort */
+}
+
+/* Caption overlay (optional) */
+.slide-caption {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: linear-gradient(to top, rgba(0, 0, 0, 0.8), transparent);
+    color: white;
+    padding: 2rem;
+    transform: translateY(100%);
+    transition: transform 0.3s ease;
+}
+
+.slide.active .slide-caption {
+    transform: translateY(0);
+}
+
+.slide-caption h3 {
+    font-size: 1.5rem;
+    font-weight: 700;
+    margin: 0 0 0.5rem 0;
+}
+
+.slide-caption p {
+    font-size: 1rem;
+    margin: 0;
+    opacity: 0.9;
+}
+
+/* ═══════════════════════════════════════════════════════
+   NAVIGATION ARROWS
+   ═══════════════════════════════════════════════════════ */
+
+.slider-nav {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 40px;
+    height: 40px;
+    background: rgba(255, 255, 255, 0.9);
+    border: none;
+    border-radius: 50%;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease;
+    z-index: 10;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+}
+
+.slider-nav:hover {
+    background: white;
+    transform: translateY(-50%) scale(1.1);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+}
+
+.slider-nav.prev {
+    left: 1rem;
+}
+
+.slider-nav.next {
+    right: 1rem;
+}
+
+.slider-nav svg {
+    width: 20px;
+    height: 20px;
+    fill: #2563eb;
+}
+
+/* ═══════════════════════════════════════════════════════
+   DOTS INDICATOR
+   ═══════════════════════════════════════════════════════ */
+
+.slider-dots {
+    position: absolute;
+    bottom: 1.5rem;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    gap: 0.5rem;
+    z-index: 10;
+}
+
+.dot {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.5);
+    border: 2px solid white;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.dot:hover {
+    background: rgba(255, 255, 255, 0.8);
+    transform: scale(1.2);
+}
+
+.dot.active {
+    background: white;
+    width: 30px;
+    border-radius: 5px;
+}
+
+/* ═══════════════════════════════════════════════════════
+   RESPONSIVE DESIGN
+   ═══════════════════════════════════════════════════════ */
+
+/* Tablet */
+@media (max-width: 768px) {
+    .slider-wrapper {
+        height: 350px;
+    }
+    
+    .slide-caption {
+        padding: 1.5rem;
+    }
+    
+    .slide-caption h3 {
+        font-size: 1.25rem;
+    }
+    
+    .slide-caption p {
+        font-size: 0.9rem;
+    }
+    
+    .slider-nav {
+        width: 35px;
+        height: 35px;
+    }
+    
+    .slider-nav.prev {
+        left: 0.5rem;
+    }
+    
+    .slider-nav.next {
+        right: 0.5rem;
+    }
+}
+
+/* Mobile */
+@media (max-width: 480px) {
+    .slider-wrapper {
+        height: 250px;
+    }
+    
+    .slider-container {
+        border-radius: 8px;
+        margin-bottom: 1.5rem;
+    }
+    
+    .slide-caption {
+        padding: 1rem;
+    }
+    
+    .slide-caption h3 {
+        font-size: 1rem;
+    }
+    
+    .slide-caption p {
+        font-size: 0.85rem;
+    }
+    
+    .slider-nav {
+        width: 30px;
+        height: 30px;
+    }
+    
+    .slider-nav svg {
+        width: 16px;
+        height: 16px;
+    }
+    
+    .slider-dots {
+        bottom: 1rem;
+    }
+    
+    .dot {
+        width: 8px;
+        height: 8px;
+    }
+    
+    .dot.active {
+        width: 24px;
+    }
+}
+
+/* ═══════════════════════════════════════════════════════
+   LOADING STATE
+   ═══════════════════════════════════════════════════════ */
+
+.slider-loading {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 450px;
+    background: #f1f5f9;
+}
+
+.slider-loading::after {
+    content: "Memuatkan slider...";
+    color: #64748b;
+    font-size: 1rem;
+}
+
+/* ═══════════════════════════════════════════════════════
+   ANIMATION (Optional - untuk smooth entrance)
+   ═══════════════════════════════════════════════════════ */
+
+@keyframes slideIn {
+    from {
+        opacity: 0;
+        transform: scale(1.1);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+.slide.active img {
+    animation: slideIn 0.8s ease-out;
+}
