@@ -67,18 +67,30 @@ class Slider {
         this.slides = container.querySelectorAll('.slide');
     }
 
-    createCaption(slide) {
-        if (!sliderSettings.showCaptions || (!slide.title && !slide.description)) {
-            return '';
-        }
+    // DALAM FAIL: slider.js
 
-        return `
-            <div class="slide-caption">
-                ${slide.title ? `<h3>${slide.title}</h3>` : ''}
-                ${slide.description ? `<p>${slide.description}</p>` : ''}
-            </div>
-        `;
+createCaption(slide) {
+    if (!sliderSettings.showCaptions || (!slide.title && !slide.description)) {
+        return '';
     }
+
+    // Semak jika ada pautan untuk kapsyen
+    const descriptionText = slide.description || '';
+    const descriptionLink = slide.captionLink || '';
+    let linkedDescription = descriptionText;
+
+    // Jika ada pautan, balut description dengan tag <a>
+    if (descriptionLink && descriptionText) {
+        linkedDescription = `<a href="${descriptionLink}" target="_blank" style="color: inherit; text-decoration: underline;">${descriptionText}</a>`;
+    }
+
+    return `
+        <div class="slide-caption">
+            ${slide.title ? `<h3>${slide.title}</h3>` : ''}
+            ${descriptionText ? `<p>${linkedDescription}</p>` : ''}
+        </div>
+    `;
+}
 
     setupEventListeners() {
         const container = document.getElementById('slider-container');
@@ -206,4 +218,5 @@ document.addEventListener('DOMContentLoaded', () => {
     if (slidesData && slidesData.length > 0) {
         new Slider();
     }
+
 });
