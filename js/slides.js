@@ -21,9 +21,7 @@ const slidesData = [
         description: '4C'
     },
     {
-        image: 'images/slider/slide2.png',
-        title: 'SEMAKAN TAWARAN TINGKATAN ENAM TAHUN 2025',
-        description: 'https://sst6.moe.gov.my/semakant6/'
+        image: 'images/slider/slide2.png', 
     },
     {
         image: 'images/slider/slide3.jpg',
@@ -61,7 +59,7 @@ const slidesData = [
 const sliderSettings = {
     // Auto-play settings
     autoPlay: true,              // true = auto slide, false = manual je
-    autoPlayInterval: 2000,      // 5000 = 5 saat per slide (dalam milliseconds)
+    autoPlayInterval: 5000,      // 5000 = 5 saat per slide (dalam milliseconds)
     
     // Animation settings
     transitionSpeed: 500,        // 800ms = kelajuan tukar slide
@@ -141,5 +139,6 @@ const slidesData = [
 ];
 
 */
+
 
 
