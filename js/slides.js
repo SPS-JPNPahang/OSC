@@ -21,7 +21,7 @@ const slidesData = [
         description: '4C'
     },
     {
-        image: 'images/slider/slide2.jpg',
+        image: 'images/slider/slide2.png',
         title: 'SEMAKAN TAWARAN TINGKATAN ENAM TAHUN 2025',
         description: 'https://sst6.moe.gov.my/semakant6/'
     },
@@ -141,3 +141,4 @@ const slidesData = [
 ];
 
 */
+
