@@ -10,8 +10,8 @@
 const engageBoxConfig = {
     image: 'images/engagebox/Welcome.jpg',
     message: 'Selamat datang ke One Stop Centre SPS, JPN Pahang. Portal ini menyediakan akses pantas dan memudahkan urusan anda.',
-    autoCloseDelay: 10000, // 10 saat (dalam milliseconds)
-    showDelay: 1000 // Delay 1 saat sebelum popup muncul
+    autoCloseDelay: 15000, // 10 saat (dalam milliseconds)
+    showDelay: 500 // Delay 1 saat sebelum popup muncul
 };
 
 // Tunggu sehingga page fully loaded
@@ -109,4 +109,5 @@ function initEngageBox() {
     }
     
     console.log('✅ EngageBox loaded successfully!');
+
 }
