@@ -61,7 +61,7 @@ const slidesData = [
 const sliderSettings = {
     // Auto-play settings
     autoPlay: true,              // true = auto slide, false = manual je
-    autoPlayInterval: 3000,      // 5000 = 5 saat per slide (dalam milliseconds)
+    autoPlayInterval: 2000,      // 5000 = 5 saat per slide (dalam milliseconds)
     
     // Animation settings
     transitionSpeed: 500,        // 800ms = kelajuan tukar slide
@@ -141,4 +141,5 @@ const slidesData = [
 ];
 
 */
+
 
