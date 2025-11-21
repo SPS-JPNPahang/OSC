@@ -17,36 +17,24 @@
 const slidesData = [
     {
         image: 'images/slider/slide1.jpg',
-        title: 'Dari Impian',
-        description: '4C'
     },
     {
         image: 'images/slider/slide2.png', 
     },
     {
         image: 'images/slider/slide3.jpg',
-        title: 'Mencuba Bereksperimen',
-        description: '4C'
     },
     {
         image: 'images/slider/slide4.jpg',
-        title: 'Untuk Sesuatu',
-        description: '4C'
     },
     {
         image: 'images/slider/slide5.jpg',
-        title: 'Menjadi Permulaan',
-        description: '4C'
     },
     {
         image: 'images/slider/slide6.jpg',
-        title: 'Sehingga Legasi',
-        description: '4C'
     },
     {
         image: 'images/slider/slide7.jpg',
-        title: 'Tercipta',
-        description: 'SPS-JPN Pahang'
     }
 
 ];
@@ -139,6 +127,7 @@ const slidesData = [
 ];
 
 */
+
 
 
 
